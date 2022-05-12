@@ -107,7 +107,7 @@ public class SpawnerPrototype<T> : SimulationBehaviour, IPlayerJoined, IPlayerLe
 
       Vector3 spawnPosition = spawnTransform.position;
       Quaternion spawnRotation = spawnTransform.rotation;
-
+            int i = PlayerPrefs.GetInt("number");
       return runner.Spawn(PlayerPrefab, spawnPosition, spawnRotation, player);
     }
   }

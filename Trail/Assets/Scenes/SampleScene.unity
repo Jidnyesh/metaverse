@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.7103729, g: 0.7359552, b: 0.7687403, a: 1}
+  m_IndirectSpecularColor: {r: 0.4629026, g: 0.5009088, b: 0.55219305, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -784,10 +784,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88230848386761045af440d808ee3efa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ch: {fileID: 0}
+  Door: {fileID: 0}
+  loading: {fileID: 1076337287}
+  Hand: {fileID: 0}
   RunnerPrefab: {fileID: 8659418270202086581, guid: d1004e55ce6c0294997cfd8da3b22137, type: 3}
   StartMode: 0
   AutoStartAs: 0
   AutoHideGUI: 1
+  Teacher: {fileID: 0}
   AutoClients: 0
   ServerPort: 27015
   DefaultRoomName: DefaultRoom
@@ -1609,6 +1614,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3513135372722924016, guid: 916bc963cb37795489903281381bbe14, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 6.88
+      objectReference: {fileID: 0}
     - target: {fileID: 4568384409877615264, guid: 916bc963cb37795489903281381bbe14, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -1665,6 +1674,11 @@ PrefabInstance:
     - {fileID: 6394737224123739083, guid: 916bc963cb37795489903281381bbe14, type: 3}
     - {fileID: 3287245857343831305, guid: 916bc963cb37795489903281381bbe14, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 916bc963cb37795489903281381bbe14, type: 3}
+--- !u!1 &1076337287 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 700488141, guid: 916bc963cb37795489903281381bbe14, type: 3}
+  m_PrefabInstance: {fileID: 1076337286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1166246379
 GameObject:
   m_ObjectHideFlags: 0

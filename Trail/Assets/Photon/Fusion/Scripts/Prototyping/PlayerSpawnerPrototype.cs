@@ -1,18 +1,22 @@
 
 using Fusion;
-
+using UnityEngine;
 /// <summary>
 /// Prototyping component for spawning Player avatars.
 /// </summary>
 [SimulationBehaviour(Stages = SimulationStages.Forward, Modes =  SimulationModes.Server | SimulationModes.Host)]
-public class PlayerSpawnerPrototype : SpawnerPrototype<PlayerSpawnPointPrototype>, IPlayerJoined, IPlayerLeft, ISceneLoadDone {
+public class PlayerSpawnerPrototype : SpawnerPrototype<PlayerSpawnPointPrototype>, IPlayerJoined, IPlayerLeft, ISceneLoadDone 
+{
 
 #if UNITY_EDITOR
 
   protected virtual void Reset() {
     var protoPlayer = FusionPrototypingPrefabs.BasicPlayer;
-    if (protoPlayer)
-      PlayerPrefab = protoPlayer.GetComponent<NetworkObject>();
+        if (protoPlayer)
+        {
+           
+            PlayerPrefab = protoPlayer.GetComponent<NetworkObject>();
+        }
   }
 
 

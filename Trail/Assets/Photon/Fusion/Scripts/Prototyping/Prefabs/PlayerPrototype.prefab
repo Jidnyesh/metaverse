@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 4065374778257232135}
   - component: {fileID: 7291690687864886413}
   - component: {fileID: -7655463980351433282}
+  - component: {fileID: 6602247326251073963}
   m_Layer: 6
   m_Name: PlayerPrototype
   m_TagString: Untagged
@@ -383,7 +384,7 @@ MonoBehaviour:
   AoiPositionSource: {fileID: 0}
   Flags: 2305
   NetworkGuid:
-    RawGuidValue: e4df49d0bf125a740a2c14ab6e887572
+    RawGuidValue: ae35bb28071c2ca41b2c9fdb16868219
   NestedObjects: []
   NetworkedBehaviours:
   - {fileID: 8815895893571785557}
@@ -402,10 +403,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00e2a674f00349f4ca3accde09d57809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WordOffset: 0
-  WordCount: 0
   _interpolationDataSource: 0
   _MovementDirection: {x: 0, y: 0, z: 0}
+  m_Animator: {fileID: 0}
   TransformLocal: 0
   Speed: 6
 --- !u!136 &8358015882023670600
@@ -434,8 +434,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72872188c080b844a9c9d1015cf8e60a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WordOffset: 0
-  WordCount: 0
   _interpolationDataSource: 0
   TargetPlayerBy: 1
   DrawAreaOfInterestRadius: 0
@@ -470,8 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 378411a89480da345945c2f888327a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WordOffset: 0
-  WordCount: 0
   _interpolationDataSource: 0
   InterpolationSpace: 0
   InterpolationTarget: {fileID: 602043736063956190}
@@ -494,3 +490,22 @@ MonoBehaviour:
   rotationSpeed: 15
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
+--- !u!95 &6602247326251073963
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8815895893571785564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

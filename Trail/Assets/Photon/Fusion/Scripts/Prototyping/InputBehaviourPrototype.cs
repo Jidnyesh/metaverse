@@ -10,6 +10,7 @@ using UnityEngine;
 [ScriptHelp(BackColor = EditorHeaderBackColor.Steel)]
 public class InputBehaviourPrototype : Fusion.Behaviour, INetworkRunnerCallbacks
 {
+    
 
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
@@ -18,6 +19,17 @@ public class InputBehaviourPrototype : Fusion.Behaviour, INetworkRunnerCallbacks
         if (Input.GetKey(KeyCode.W))
         {
             frameworkInput.Buttons |= NetworkInputPrototype.BUTTON_FORWARD;
+        }if (Input.GetKey(KeyCode.Mouse0))
+        {
+            frameworkInput.Buttons |= NetworkInputPrototype.MOUSE;
+        }
+        if (Input.GetKey(KeyCode.Q))
+        {
+            frameworkInput.Buttons |= NetworkInputPrototype.HAND;
+        }
+        if (Input.GetKeyUp(KeyCode.Q))
+        {
+            frameworkInput.Buttons |= NetworkInputPrototype.HANDUP;
         }
 
         if (Input.GetKeyUp(KeyCode.W))
@@ -114,7 +126,9 @@ public class InputBehaviourPrototype : Fusion.Behaviour, INetworkRunnerCallbacks
         // shutdown any client that has disconnected from server
         //runner.Shutdown();
     }
-    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) { }
+    public void OnPlayerJoined(NetworkRunner runner, PlayerRef player) {
+        
+    }
     public void OnPlayerLeft(NetworkRunner runner, PlayerRef player) { }
     public void OnUserSimulationMessage(NetworkRunner runner, SimulationMessagePtr message) { }
     public void OnShutdown(NetworkRunner runner, ShutdownReason shutdownReason) { }
@@ -171,6 +185,9 @@ public struct NetworkInputPrototype : INetworkInput
     public const uint BACK_UP = 1 << 17;
     public const uint LEFT_UP = 1 << 18;
     public const uint RIGHT_UP = 1 << 19;
+    public const uint HAND = 1 << 20;
+    public const uint HANDUP = 1 << 21;
+    public const uint MOUSE = 1 << 22;
 
 
     public uint Buttons;

@@ -76,7 +76,8 @@ namespace Fusion.Assistants {
       
       nr.gameObject.EnsureComponentExists<InputBehaviourPrototype>();
       var spawner = AddPlayerSpawner(nr.gameObject);
-      spawner.PlayerPrefab = FusionPrototypingPrefabs.BasicPlayerRB2D.GetComponent<NetworkObject>();
+            int i = PlayerPrefs.GetInt("number");
+            spawner.PlayerPrefab = FusionPrototypingPrefabs.BasicPlayerRB2D.GetComponent<NetworkObject>();
       nr.gameObject.EnsureComponentExists<NetworkEvents>();
      
       // Set our physics to 2D

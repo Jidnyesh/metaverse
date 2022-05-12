@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Teacher
   - Student
+  - Tea_grp
+  - Stu_grp
+  - Tea_rig
+  - Stu_rig
+  - Whiteboard
   layers:
   - Default
   - TransparentFX

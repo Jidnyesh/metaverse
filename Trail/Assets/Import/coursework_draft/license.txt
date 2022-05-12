@@ -1,0 +1,11 @@
+Model Information:
+* title:	coursework draft
+* source:	https://sketchfab.com/3d-models/coursework-draft-62344643241940929b3329020f545d04
+* author:	AlexeyLaptev (https://sketchfab.com/AlexeyLaptev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "coursework draft" (https://sketchfab.com/3d-models/coursework-draft-62344643241940929b3329020f545d04) by AlexeyLaptev (https://sketchfab.com/AlexeyLaptev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

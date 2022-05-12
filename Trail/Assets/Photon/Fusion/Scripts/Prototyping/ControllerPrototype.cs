@@ -14,7 +14,7 @@ public class ControllerPrototype : Fusion.NetworkBehaviour
     public Vector3 MovementDirection { get; set; }
     public Animator m_Animator;
     public bool TransformLocal = false;
-
+    public Transform m_Camera;
     [DrawIf(nameof(ShowSpeed), DrawIfHideType.Hide, DoIfCompareOperator.NotEqual)]
     public float Speed = 6f;
 
@@ -24,16 +24,33 @@ public class ControllerPrototype : Fusion.NetworkBehaviour
 
     public void Start()
     {
-        
+        m_Camera = GameObject.FindGameObjectWithTag("MainCamera").transform;
         //PlayerPrefs.SetString("type", "NONE");
         CharacterController per = GetComponent<CharacterController>();
-        if (PlayerPrefs.GetString("type") == "Student")
+        if (PlayerPrefs.GetInt("play")==1)
         {
-            Debug.Log("Hello");
-            per.center = new Vector3(0, 2.01f, 0);
+            per.center = new Vector3(0, 1.17f, 0);
             m_Animator.SetInteger("Sit", 1);
-            PlayerPrefs.SetString("type", "NONE");
+            PlayerPrefs.SetInt("play",0);
         }
+        
+
+    }
+
+    public void Update()
+    {
+        Vector3 eulerRotation = new Vector3(transform.eulerAngles.x, m_Camera.transform.eulerAngles.y, transform.eulerAngles.z);
+        //Vector3 eulerRotatio = new Vector3(0, m_Camera.transform.rotation.y,0);
+        transform.rotation = Quaternion.Euler(eulerRotation);
+        
+
+
+
+
+        //transform.rotation = m_Camera.transform.rotation;
+        //Vector3 nr = m_Camera.eulerAngles;
+        //nr.y = m_Camera.eulerAngles.y;
+        //transform.eulerAngles = nr;
     }
 
     public void Awake()
@@ -56,6 +73,7 @@ public class ControllerPrototype : Fusion.NetworkBehaviour
 
     public override void FixedUpdateNetwork()
     {
+        
         if (Runner.Config.PhysicsEngine == NetworkProjectConfig.PhysicsEngines.None)
         {
             return;
@@ -66,12 +84,7 @@ public class ControllerPrototype : Fusion.NetworkBehaviour
         {
             direction = default;
 
-            if (input.IsDown(NetworkInputPrototype.BUTTON_FORWARD))
-            {
-                direction += TransformLocal ? transform.forward : Vector3.forward;
-
-                m_Animator.SetFloat("Forward", transform.forward.z, 0.1f, Time.deltaTime);
-            }
+            
 
             if (input.IsUp(NetworkInputPrototype.FOR_UP) || input.IsUp(NetworkInputPrototype.BACK_UP) || input.IsUp(NetworkInputPrototype.LEFT_UP) || input.IsUp(NetworkInputPrototype.RIGHT_UP))
             {
@@ -79,28 +92,29 @@ public class ControllerPrototype : Fusion.NetworkBehaviour
 
             }
 
-            if (input.IsDown(NetworkInputPrototype.BUTTON_BACKWARD))
+            if (input.IsDown(NetworkInputPrototype.BUTTON_BACKWARD) || input.IsDown(NetworkInputPrototype.MOUSE))
             {
-                direction -= TransformLocal ? transform.forward : Vector3.forward;
-                m_Animator.SetFloat("Forward", transform.forward.z * -1, 0.1f, Time.deltaTime);
+                //direction += TransformLocal ? transform.forward : Vector3.forward;
+                m_Animator.SetFloat("Forward", 1, 0.1f, Time.deltaTime);
+            }
+            
+            if (input.IsDown(NetworkInputPrototype.HAND))
+            {
+                m_Animator.SetInteger("hand", 1);
+            }
+            if (input.IsDown(NetworkInputPrototype.HANDUP))
+            {
+                m_Animator.SetInteger("hand", 0);
             }
 
 
-            if (input.IsDown(NetworkInputPrototype.BUTTON_LEFT))
-            {
-                direction -= TransformLocal ? transform.right : Vector3.right;
-                m_Animator.SetFloat("Forward", transform.right.z, 0.1f, Time.deltaTime);
-            }
+           
 
-            if (input.IsDown(NetworkInputPrototype.BUTTON_RIGHT))
-            {
-                direction += TransformLocal ? transform.right : Vector3.right;
-                m_Animator.SetFloat("Forward", transform.right.z * -1, 0.1f, Time.deltaTime);
-            }
+            
 
             direction = direction.normalized;
-
-            MovementDirection = direction;
+            //MovementDirection = m_Camera.transform.rotation * direction;
+            //MovementDirection = direction;
 
             if (input.IsDown(NetworkInputPrototype.BUTTON_JUMP))
             {
@@ -119,6 +133,7 @@ public class ControllerPrototype : Fusion.NetworkBehaviour
             direction = MovementDirection;
         }
 
+        
         if (_ncc)
         {
             _ncc.Move(direction);

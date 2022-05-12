@@ -17,6 +17,6 @@ public class PlayerCamera : MonoBehaviour
 		//targetPosition.x = Mathf.Max(targetPosition.x, 0f);
 		//targetPosition.z = targetPosition.z;
 		transform.position = targetPosition;
-		transform.rotation = targetroatation;
+		//transform.rotation = targetroatation;
 	}
 }
